@@ -1,8 +1,9 @@
-package com.example.demo.Controllers;
+package com.example.demo.controllers;
 
 import java.util.List;
 
-import org.apache.el.stream.Optional;
+import com.example.demo.service.AppUserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Repositories.AppUserRepository;
 import com.example.demo.beans.AppUser;
 
 @RestController
@@ -23,7 +23,7 @@ import com.example.demo.beans.AppUser;
 public class AppUserController {
 
     @Autowired
-    private AppUser userService;
+    private AppUserService userService;
 
     @GetMapping
     public List<AppUser> getAllUsers() {
@@ -37,7 +37,7 @@ public class AppUserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getUserById(@PathVariable long id) {
+    public ResponseEntity<Object> getUserById(@PathVariable int id) {
         AppUser user = userService.findById(id);
         if (user == null) {
             return new ResponseEntity<>("Utilisateur avec ID = " + id + " n'existe pas", HttpStatus.BAD_REQUEST);
@@ -47,7 +47,7 @@ public class AppUserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateUser(@PathVariable long id, @RequestBody AppUser newUser) {
+    public ResponseEntity<Object> updateUser(@PathVariable int id, @RequestBody AppUser newUser) {
         AppUser oldUser = userService.findById(id);
         if (oldUser == null) {
             return new ResponseEntity<>("Utilisateur avec ID = " + id + " n'existe pas", HttpStatus.BAD_REQUEST);
@@ -58,13 +58,13 @@ public class AppUserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable long id) {
+    public ResponseEntity<Object> deleteUser(@PathVariable int id) {
         AppUser user = userService.findById(id);
         if (user == null) {
             return new ResponseEntity<>("Utilisateur avec ID = " + id + " n'existe pas", HttpStatus.BAD_REQUEST);
         } else {
             userService.delete(user);
-            return ResponseEntity.ok("Utilisateur supprimé");
+            return new ResponseEntity<>("Utilisateur supprimé", HttpStatus.OK);
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 
-import com.example.demo.Repositories.ParcelleRepository;
+import com.example.demo.repositories.ParcelleRepository;
 import com.example.demo.beans.Parcelle;
 import com.example.demo.IDao.IDao;
 import org.springframework.beans.factory.annotation.Autowired;

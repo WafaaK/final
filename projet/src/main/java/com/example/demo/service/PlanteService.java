@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.Repositories.PlanteRepository;
+import com.example.demo.repositories.PlanteRepository;
 import com.example.demo.beans.Plante;
 import com.example.demo.IDao.IDao;
 import org.springframework.beans.factory.annotation.Autowired;

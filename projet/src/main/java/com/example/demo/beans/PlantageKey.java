@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class PlantageKey implements Serializable {

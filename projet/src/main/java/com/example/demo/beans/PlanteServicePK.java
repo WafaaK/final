@@ -3,7 +3,7 @@ package com.example.demo.beans;
 import java.io.Serializable; 
 import java.util.Objects;
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class PlanteServicePK implements Serializable {

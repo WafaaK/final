@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.Repositories.FermeRepository;
+import com.example.demo.repositories.FermeRepository;
 import com.example.demo.beans.Ferme;
 import com.example.demo.IDao.IDao;
 import org.springframework.beans.factory.annotation.Autowired;
